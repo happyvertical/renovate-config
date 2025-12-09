@@ -8,6 +8,13 @@
     "enabled": true,
     "schedule": ["before 9am on monday"]
   },
+  "postUpdateOptions": ["pnpmDedupe"],
+  "allowedPostUpgradeCommands": ["^pnpm"],
+  "postUpgradeTasks": {
+    "commands": ["pnpm install --no-frozen-lockfile"],
+    "fileFilters": ["pnpm-lock.yaml"],
+    "executionMode": "branch"
+  },
   "packageRules": [
     {
       "matchManagers": ["npm"],
