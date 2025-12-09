@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Bun-specific configuration (for iac repo)",
+  "extends": [
+    "local>happyvertical/renovate-config"
+  ],
+  "packageRules": [
+    {
+      "matchManagers": ["npm"],
+      "rangeStrategy": "replace"
+    }
+  ]
+}

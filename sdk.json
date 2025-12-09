@@ -1,0 +1,52 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "SDK (foundation layer) configuration",
+  "extends": [
+    "local>happyvertical/renovate-config",
+    "local>happyvertical/renovate-config:monorepo",
+    "local>happyvertical/renovate-config:pnpm",
+    "local>happyvertical/renovate-config//groups/ai-sdks",
+    "local>happyvertical/renovate-config//groups/typescript-tools",
+    "local>happyvertical/renovate-config//groups/aws-sdks",
+    "local>happyvertical/renovate-config//groups/database"
+  ],
+  "labels": ["dependencies", "renovate", "sdk"],
+  "packageRules": [
+    {
+      "description": "Pin versions in SDK (foundation layer)",
+      "matchPackagePatterns": ["*"],
+      "rangeStrategy": "pin"
+    },
+    {
+      "description": "SDK is foundation - be conservative with major updates",
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "labels": ["dependencies", "major", "needs-review"]
+    },
+    {
+      "description": "Automerge all patch updates",
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "description": "Automerge minor updates for dev dependencies",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor"],
+      "automerge": true
+    },
+    {
+      "description": "Group Playwright ecosystem",
+      "matchPackagePatterns": ["^@playwright/", "^playwright"],
+      "groupName": "Playwright",
+      "groupSlug": "playwright",
+      "labels": ["dependencies", "testing"]
+    },
+    {
+      "description": "Group PDF.js",
+      "matchPackageNames": ["pdfjs-dist"],
+      "groupName": "PDF.js",
+      "groupSlug": "pdfjs",
+      "labels": ["dependencies", "pdf"]
+    }
+  ]
+}

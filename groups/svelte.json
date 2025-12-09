@@ -1,0 +1,13 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Svelte ecosystem dependency grouping",
+  "packageRules": [
+    {
+      "description": "Group Svelte core",
+      "matchPackagePatterns": ["^svelte$", "^svelte-", "^@sveltejs/"],
+      "groupName": "Svelte",
+      "groupSlug": "svelte",
+      "labels": ["dependencies", "svelte"]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "AWS SDK dependency grouping",
+  "packageRules": [
+    {
+      "description": "Group all AWS SDK v3 packages",
+      "matchPackagePatterns": ["^@aws-sdk/"],
+      "groupName": "AWS SDK v3",
+      "groupSlug": "aws-sdk-v3",
+      "labels": ["dependencies", "aws"],
+      "schedule": ["before 9am on monday"]
+    }
+  ]
+}

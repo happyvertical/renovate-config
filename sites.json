@@ -1,0 +1,48 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Sites configuration (happyvertical.com, bangblow.com)",
+  "extends": [
+    "local>happyvertical/renovate-config",
+    "local>happyvertical/renovate-config//groups/svelte",
+    "local>happyvertical/renovate-config//groups/typescript-tools"
+  ],
+  "labels": ["dependencies", "renovate", "sites"],
+  "packageRules": [
+    {
+      "description": "Group SST packages",
+      "matchPackageNames": ["sst"],
+      "groupName": "SST",
+      "groupSlug": "sst",
+      "labels": ["dependencies", "deployment"]
+    },
+    {
+      "description": "Group Tailwind ecosystem",
+      "matchPackagePatterns": ["^tailwindcss", "^@tailwindcss/", "autoprefixer", "postcss"],
+      "groupName": "Tailwind CSS",
+      "groupSlug": "tailwindcss",
+      "labels": ["dependencies", "css"]
+    },
+    {
+      "description": "Group Shiki (syntax highlighting)",
+      "matchPackageNames": ["shiki"],
+      "groupName": "Shiki",
+      "groupSlug": "shiki",
+      "labels": ["dependencies", "syntax"]
+    },
+    {
+      "description": "Automerge patch updates",
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "description": "Ignore link: dependencies (local development)",
+      "matchCurrentValue": "/^link:/",
+      "enabled": false
+    },
+    {
+      "description": "Ignore file: dependencies",
+      "matchCurrentValue": "/^file:/",
+      "enabled": false
+    }
+  ]
+}

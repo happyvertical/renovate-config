@@ -1,0 +1,60 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "SMRT (framework layer) configuration",
+  "extends": [
+    "local>happyvertical/renovate-config",
+    "local>happyvertical/renovate-config:monorepo",
+    "local>happyvertical/renovate-config:pnpm",
+    "local>happyvertical/renovate-config//groups/ai-sdks",
+    "local>happyvertical/renovate-config//groups/typescript-tools",
+    "local>happyvertical/renovate-config//groups/database",
+    "local>happyvertical/renovate-config//groups/svelte"
+  ],
+  "labels": ["dependencies", "renovate", "smrt"],
+  "packageRules": [
+    {
+      "description": "Group @happyvertical SDK packages (pinned versions)",
+      "matchPackagePatterns": ["^@happyvertical/(?!smrt)"],
+      "groupName": "HappyVertical SDK",
+      "groupSlug": "happyvertical-sdk",
+      "labels": ["dependencies", "sdk", "upstream"]
+    },
+    {
+      "description": "Automerge SDK patch updates",
+      "matchPackagePatterns": ["^@happyvertical/(?!smrt)"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "description": "SDK major/minor updates need review",
+      "matchPackagePatterns": ["^@happyvertical/(?!smrt)"],
+      "matchUpdateTypes": ["major", "minor"],
+      "automerge": false,
+      "labels": ["dependencies", "sdk", "upstream", "needs-review"]
+    },
+    {
+      "description": "Pin SDK versions (SMRT depends on SDK)",
+      "matchPackagePatterns": ["^@happyvertical/(?!smrt)"],
+      "rangeStrategy": "pin"
+    },
+    {
+      "description": "Automerge all other patch updates",
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "description": "Group HTML parsing libraries",
+      "matchPackageNames": ["cheerio", "jsdom", "htmlparser2", "happy-dom"],
+      "groupName": "HTML Parsing",
+      "groupSlug": "html-parsing",
+      "labels": ["dependencies", "parsing"]
+    },
+    {
+      "description": "Group glob utilities",
+      "matchPackageNames": ["fast-glob", "minimatch", "glob"],
+      "groupName": "Glob Utilities",
+      "groupSlug": "glob",
+      "labels": ["dependencies", "utils"]
+    }
+  ]
+}

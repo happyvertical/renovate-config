@@ -1,0 +1,34 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Client preset for external organizations using @happyvertical packages",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard",
+    ":semanticCommitTypeAll(chore)"
+  ],
+  "npmrc": "@happyvertical:registry=https://npm.pkg.github.com",
+  "packageRules": [
+    {
+      "description": "Group all @happyvertical packages together",
+      "matchPackagePatterns": ["^@happyvertical/"],
+      "groupName": "HappyVertical Packages",
+      "groupSlug": "happyvertical",
+      "labels": ["dependencies", "happyvertical"]
+    },
+    {
+      "description": "Automerge @happyvertical patch updates",
+      "matchPackagePatterns": ["^@happyvertical/"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash"
+    },
+    {
+      "description": "Review @happyvertical major updates",
+      "matchPackagePatterns": ["^@happyvertical/"],
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "labels": ["dependencies", "happyvertical", "major"]
+    }
+  ]
+}

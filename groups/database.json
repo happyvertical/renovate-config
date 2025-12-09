@@ -1,0 +1,34 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Database dependency grouping",
+  "packageRules": [
+    {
+      "description": "Group LibSQL/Turso client",
+      "matchPackagePatterns": ["^@libsql/"],
+      "groupName": "LibSQL Client",
+      "groupSlug": "libsql",
+      "labels": ["dependencies", "database"]
+    },
+    {
+      "description": "Group PostgreSQL clients",
+      "matchPackageNames": ["pg", "@types/pg", "postgres"],
+      "groupName": "PostgreSQL",
+      "groupSlug": "postgresql",
+      "labels": ["dependencies", "database"]
+    },
+    {
+      "description": "Group better-sqlite3",
+      "matchPackageNames": ["better-sqlite3", "@types/better-sqlite3"],
+      "groupName": "better-sqlite3",
+      "groupSlug": "better-sqlite3",
+      "labels": ["dependencies", "database"]
+    },
+    {
+      "description": "Group DuckDB",
+      "matchPackagePatterns": ["^duckdb", "^@duckdb/"],
+      "groupName": "DuckDB",
+      "groupSlug": "duckdb",
+      "labels": ["dependencies", "database"]
+    }
+  ]
+}

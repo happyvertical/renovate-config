@@ -1,0 +1,55 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "TypeScript tooling dependency grouping",
+  "packageRules": [
+    {
+      "description": "Group TypeScript and related tooling",
+      "matchPackageNames": ["typescript", "tsx", "ts-node"],
+      "groupName": "TypeScript",
+      "groupSlug": "typescript",
+      "labels": ["dependencies", "typescript"]
+    },
+    {
+      "description": "Group Vite ecosystem",
+      "matchPackagePatterns": ["^vite$", "^vite-", "^@vitejs/"],
+      "groupName": "Vite",
+      "groupSlug": "vite",
+      "labels": ["dependencies", "build"]
+    },
+    {
+      "description": "Group Vitest ecosystem",
+      "matchPackagePatterns": ["^vitest$", "^@vitest/"],
+      "groupName": "Vitest",
+      "groupSlug": "vitest",
+      "labels": ["dependencies", "testing"]
+    },
+    {
+      "description": "Group Biome (linting/formatting)",
+      "matchPackagePatterns": ["^@biomejs/"],
+      "groupName": "Biome",
+      "groupSlug": "biome",
+      "labels": ["dependencies", "tooling"]
+    },
+    {
+      "description": "Group TypeDoc",
+      "matchPackagePatterns": ["^typedoc", "^typedoc-plugin-"],
+      "groupName": "TypeDoc",
+      "groupSlug": "typedoc",
+      "labels": ["dependencies", "docs"]
+    },
+    {
+      "description": "Group Changesets",
+      "matchPackagePatterns": ["^@changesets/"],
+      "groupName": "Changesets",
+      "groupSlug": "changesets",
+      "labels": ["dependencies", "release"]
+    },
+    {
+      "description": "Group Turbo",
+      "matchPackageNames": ["turbo"],
+      "groupName": "Turborepo",
+      "groupSlug": "turbo",
+      "labels": ["dependencies", "build"]
+    }
+  ]
+}

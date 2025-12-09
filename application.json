@@ -1,0 +1,60 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Application layer configuration (praeco, caelus, aedile)",
+  "extends": [
+    "local>happyvertical/renovate-config",
+    "local>happyvertical/renovate-config:pnpm",
+    "local>happyvertical/renovate-config//groups/ai-sdks",
+    "local>happyvertical/renovate-config//groups/typescript-tools",
+    "local>happyvertical/renovate-config//groups/database",
+    "local>happyvertical/renovate-config//groups/svelte"
+  ],
+  "labels": ["dependencies", "renovate", "application"],
+  "packageRules": [
+    {
+      "description": "Group @happyvertical SDK packages",
+      "matchPackagePatterns": ["^@happyvertical/(?!smrt).*$"],
+      "excludePackagePatterns": ["^@happyvertical/smrt"],
+      "groupName": "HappyVertical SDK",
+      "groupSlug": "happyvertical-sdk",
+      "labels": ["dependencies", "sdk", "upstream"]
+    },
+    {
+      "description": "Group @happyvertical/smrt packages",
+      "matchPackagePatterns": ["^@happyvertical/smrt"],
+      "groupName": "SMRT Framework",
+      "groupSlug": "smrt-framework",
+      "labels": ["dependencies", "smrt", "upstream"]
+    },
+    {
+      "description": "Automerge SDK and SMRT patch updates",
+      "matchPackagePatterns": ["^@happyvertical/"],
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "description": "Use semver ranges in applications",
+      "matchPackagePatterns": ["*"],
+      "rangeStrategy": "bump"
+    },
+    {
+      "description": "Automerge all patch updates",
+      "matchUpdateTypes": ["patch"],
+      "automerge": true
+    },
+    {
+      "description": "Group Crawlee ecosystem",
+      "matchPackagePatterns": ["^crawlee", "^@crawlee/"],
+      "groupName": "Crawlee",
+      "groupSlug": "crawlee",
+      "labels": ["dependencies", "scraping"]
+    },
+    {
+      "description": "Group web scraping tools",
+      "matchPackageNames": ["cheerio", "jsdom", "playwright", "happy-dom"],
+      "groupName": "Web Scraping",
+      "groupSlug": "web-scraping",
+      "labels": ["dependencies", "scraping"]
+    }
+  ]
+}

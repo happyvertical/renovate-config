@@ -1,0 +1,20 @@
+{
+  "name": "@happyvertical/renovate-config",
+  "version": "1.0.0",
+  "description": "Shareable Renovate configuration for HappyVertical organization",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/happyvertical/renovate-config.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "renovate",
+    "renovate-config",
+    "renovate-preset",
+    "happyvertical"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  }
+}

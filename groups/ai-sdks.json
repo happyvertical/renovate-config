@@ -1,0 +1,41 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "AI SDK dependency grouping",
+  "packageRules": [
+    {
+      "description": "Group OpenAI SDK updates",
+      "matchPackageNames": ["openai"],
+      "groupName": "OpenAI SDK",
+      "groupSlug": "openai-sdk",
+      "labels": ["dependencies", "ai"]
+    },
+    {
+      "description": "Group Anthropic SDK updates",
+      "matchPackagePatterns": ["^@anthropic-ai/"],
+      "groupName": "Anthropic SDK",
+      "groupSlug": "anthropic-sdk",
+      "labels": ["dependencies", "ai"]
+    },
+    {
+      "description": "Group Google GenAI SDK updates",
+      "matchPackageNames": ["@google/genai", "@google/generative-ai"],
+      "groupName": "Google GenAI SDK",
+      "groupSlug": "google-genai-sdk",
+      "labels": ["dependencies", "ai"]
+    },
+    {
+      "description": "Group LangChain updates",
+      "matchPackagePatterns": ["^@langchain/", "^langchain"],
+      "groupName": "LangChain",
+      "groupSlug": "langchain",
+      "labels": ["dependencies", "ai"]
+    },
+    {
+      "description": "Group MCP SDK updates",
+      "matchPackagePatterns": ["^@modelcontextprotocol/"],
+      "groupName": "MCP SDK",
+      "groupSlug": "mcp-sdk",
+      "labels": ["dependencies", "ai"]
+    }
+  ]
+}
