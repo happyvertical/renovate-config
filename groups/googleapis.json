@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Google APIs dependency grouping",
+  "packageRules": [
+    {
+      "description": "Group all googleapis packages together",
+      "matchPackagePatterns": ["^googleapis", "^@googleapis/"],
+      "groupName": "googleapis",
+      "groupSlug": "googleapis",
+      "separateMultipleMajor": false,
+      "labels": ["dependencies", "google"],
+      "schedule": ["before 9am on monday"]
+    }
+  ]
+}

@@ -8,7 +8,8 @@
     "local>happyvertical/renovate-config//groups/ai-sdks",
     "local>happyvertical/renovate-config//groups/typescript-tools",
     "local>happyvertical/renovate-config//groups/aws-sdks",
-    "local>happyvertical/renovate-config//groups/database"
+    "local>happyvertical/renovate-config//groups/database",
+    "local>happyvertical/renovate-config//groups/googleapis"
   ],
   "labels": ["dependencies", "renovate", "sdk"],
   "packageRules": [
