@@ -47,5 +47,14 @@
   "dependencyDashboard": true,
   "dependencyDashboardTitle": "Dependency Dashboard",
   "dependencyDashboardHeader": "This issue contains a list of all dependencies that can be updated. Click a checkbox to create a PR for that update.",
-  "dependencyDashboardAutoclose": false
+  "dependencyDashboardAutoclose": false,
+  "packageRules": [
+    {
+      "description": "Group all non-major updates into a single PR",
+      "groupName": "all dependencies",
+      "groupSlug": "all-dependencies",
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest", "pinDigest"]
+    }
+  ]
 }

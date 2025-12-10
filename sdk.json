@@ -14,11 +14,6 @@
   "labels": ["dependencies", "renovate", "sdk"],
   "packageRules": [
     {
-      "description": "Pin versions in SDK (foundation layer)",
-      "matchPackagePatterns": ["*"],
-      "rangeStrategy": "pin"
-    },
-    {
       "description": "Don't pin engines (node/pnpm) - breaks postUpgradeTasks when Renovate container has different versions",
       "matchDepTypes": ["engines"],
       "rangeStrategy": "replace"
@@ -39,20 +34,6 @@
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["minor"],
       "automerge": true
-    },
-    {
-      "description": "Group Playwright ecosystem",
-      "matchPackagePatterns": ["^@playwright/", "^playwright"],
-      "groupName": "Playwright",
-      "groupSlug": "playwright",
-      "labels": ["dependencies", "testing"]
-    },
-    {
-      "description": "Group PDF.js",
-      "matchPackageNames": ["pdfjs-dist"],
-      "groupName": "PDF.js",
-      "groupSlug": "pdfjs",
-      "labels": ["dependencies", "pdf"]
     }
   ]
 }
