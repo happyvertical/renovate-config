@@ -16,7 +16,7 @@
       "description": "GitHub Packages registry for @happyvertical scope"
     }
   ],
-  "npmrc": "@happyvertical:registry=https://npm.pkg.github.com\n@have:registry=https://npm.pkg.github.com",
+  "npmrc": "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}\n@happyvertical:registry=https://npm.pkg.github.com\n@have:registry=https://npm.pkg.github.com",
   "labels": ["dependencies", "renovate"],
   "prHourlyLimit": 4,
   "prConcurrentLimit": 10,
