@@ -19,6 +19,11 @@
       "rangeStrategy": "pin"
     },
     {
+      "description": "Don't pin engines (node/pnpm) - breaks postUpgradeTasks when Renovate container has different versions",
+      "matchDepTypes": ["engines"],
+      "rangeStrategy": "replace"
+    },
+    {
       "description": "SDK is foundation - be conservative with major updates",
       "matchUpdateTypes": ["major"],
       "automerge": false,
