@@ -4,12 +4,7 @@
   "extends": [
     "local>happyvertical/renovate-config",
     "local>happyvertical/renovate-config:monorepo",
-    "local>happyvertical/renovate-config:pnpm",
-    "local>happyvertical/renovate-config//groups/ai-sdks",
-    "local>happyvertical/renovate-config//groups/typescript-tools",
-    "local>happyvertical/renovate-config//groups/aws-sdks",
-    "local>happyvertical/renovate-config//groups/database",
-    "local>happyvertical/renovate-config//groups/googleapis"
+    "local>happyvertical/renovate-config:pnpm"
   ],
   "labels": ["dependencies", "renovate", "sdk"],
   "packageRules": [
