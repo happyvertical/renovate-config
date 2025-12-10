@@ -12,16 +12,15 @@
   "labels": ["dependencies", "renovate", "application"],
   "packageRules": [
     {
-      "description": "Group @happyvertical SDK packages",
-      "matchPackagePatterns": ["^@happyvertical/(?!smrt).*$"],
-      "excludePackagePatterns": ["^@happyvertical/smrt"],
+      "description": "Group @happyvertical SDK packages (all non-smrt packages)",
+      "matchPackagePatterns": ["^@happyvertical/(?!smrt-)"],
       "groupName": "HappyVertical SDK",
       "groupSlug": "happyvertical-sdk",
       "labels": ["dependencies", "sdk", "upstream"]
     },
     {
-      "description": "Group @happyvertical/smrt packages",
-      "matchPackagePatterns": ["^@happyvertical/smrt"],
+      "description": "Group @happyvertical/smrt-* packages (framework)",
+      "matchPackagePatterns": ["^@happyvertical/smrt-"],
       "groupName": "SMRT Framework",
       "groupSlug": "smrt-framework",
       "labels": ["dependencies", "smrt", "upstream"]
