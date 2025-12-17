@@ -50,10 +50,11 @@
   "dependencyDashboardAutoclose": false,
   "packageRules": [
     {
-      "description": "Group all non-major updates into a single PR",
+      "description": "Group all non-major updates into a single PR (excludes @happyvertical packages which have their own grouping)",
       "groupName": "all dependencies",
       "groupSlug": "all-dependencies",
       "matchPackagePatterns": ["*"],
+      "excludePackagePatterns": ["^@happyvertical/"],
       "matchUpdateTypes": ["minor", "patch", "pin", "digest", "pinDigest"]
     }
   ]
