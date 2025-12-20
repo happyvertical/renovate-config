@@ -33,11 +33,6 @@
       "labels": ["dependencies", "sdk", "upstream", "needs-review"]
     },
     {
-      "description": "Pin SDK versions (SMRT depends on SDK)",
-      "matchPackagePatterns": ["^@happyvertical/(?!smrt-)"],
-      "rangeStrategy": "pin"
-    },
-    {
       "description": "Automerge all other patch updates",
       "matchUpdateTypes": ["patch"],
       "automerge": true
