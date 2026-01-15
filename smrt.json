@@ -13,27 +13,17 @@
   "labels": ["dependencies", "renovate", "smrt"],
   "packageRules": [
     {
-      "description": "Group @happyvertical SDK packages (all non-smrt packages)",
+      "description": "Group and automerge @happyvertical SDK packages",
       "matchPackagePatterns": ["^@happyvertical/(?!smrt-)"],
       "groupName": "HappyVertical SDK",
       "groupSlug": "happyvertical-sdk",
-      "labels": ["dependencies", "sdk", "upstream"]
-    },
-    {
-      "description": "Automerge SDK patch updates",
-      "matchPackagePatterns": ["^@happyvertical/(?!smrt-)"],
-      "matchUpdateTypes": ["patch"],
+      "labels": ["dependencies", "sdk", "upstream"],
+      "separateMajorMinor": false,
+      "separateMultipleMajor": false,
       "automerge": true
     },
     {
-      "description": "SDK major/minor updates need review",
-      "matchPackagePatterns": ["^@happyvertical/(?!smrt-)"],
-      "matchUpdateTypes": ["major", "minor"],
-      "automerge": false,
-      "labels": ["dependencies", "sdk", "upstream", "needs-review"]
-    },
-    {
-      "description": "Automerge all other patch updates",
+      "description": "Automerge all patch updates",
       "matchUpdateTypes": ["patch"],
       "automerge": true
     },
