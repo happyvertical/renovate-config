@@ -25,10 +25,13 @@
   "commitMessageTopic": "{{depName}}",
   "commitMessageExtra": "to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewMajor}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}",
   "branchPrefix": "renovate/",
+  "minor": {
+    "automerge": true,
+    "automergeType": "branch"
+  },
   "patch": {
     "automerge": true,
-    "automergeType": "pr",
-    "automergeStrategy": "squash"
+    "automergeType": "branch"
   },
   "vulnerabilityAlerts": {
     "enabled": true,
@@ -50,7 +53,13 @@
   "dependencyDashboardAutoclose": false,
   "packageRules": [
     {
-      "description": "Group all non-major updates into a single PR (excludes @happyvertical packages which have their own grouping)",
+      "description": "Auto-merge pin and digest updates without PRs",
+      "matchUpdateTypes": ["pin", "digest", "pinDigest"],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "description": "Group all non-major updates (excludes @happyvertical packages which have their own grouping)",
       "groupName": "all dependencies",
       "groupSlug": "all-dependencies",
       "matchPackagePatterns": ["*"],
