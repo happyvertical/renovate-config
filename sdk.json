@@ -17,8 +17,8 @@
       "rangeStrategy": "replace"
     },
     {
-      "description": "Automerge all updates (rely on CI testing to catch issues)",
-      "matchUpdateTypes": ["major", "minor", "patch"],
+      "description": "Automerge minor and patch updates",
+      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
     }
   ]

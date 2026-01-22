@@ -34,8 +34,7 @@
     "automergeType": "branch"
   },
   "major": {
-    "automerge": true,
-    "automergeType": "branch"
+    "automerge": false
   },
   "vulnerabilityAlerts": {
     "enabled": true,
@@ -59,6 +58,14 @@
     {
       "description": "Auto-merge pin and digest updates without PRs",
       "matchUpdateTypes": ["pin", "digest", "pinDigest"],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "description": "Automerge major updates for TypeScript definitions and tools with frequent major releases",
+      "matchPackagePatterns": ["^@types/", "^eslint-plugin-", "^prettier-plugin-"],
+      "matchPackageNames": ["typescript-eslint"],
+      "matchUpdateTypes": ["major"],
       "automerge": true,
       "automergeType": "branch"
     },
