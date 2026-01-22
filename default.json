@@ -33,6 +33,10 @@
     "automerge": true,
     "automergeType": "branch"
   },
+  "major": {
+    "automerge": true,
+    "automergeType": "branch"
+  },
   "vulnerabilityAlerts": {
     "enabled": true,
     "labels": ["security", "dependencies", "renovate"],

@@ -17,14 +17,8 @@
       "rangeStrategy": "replace"
     },
     {
-      "description": "SDK is foundation - be conservative with major updates",
-      "matchUpdateTypes": ["major"],
-      "automerge": false,
-      "labels": ["dependencies", "major", "needs-review"]
-    },
-    {
-      "description": "Automerge all minor and patch updates",
-      "matchUpdateTypes": ["minor", "patch"],
+      "description": "Automerge all updates (rely on CI testing to catch issues)",
+      "matchUpdateTypes": ["major", "minor", "patch"],
       "automerge": true
     }
   ]
