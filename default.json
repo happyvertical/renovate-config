@@ -70,6 +70,13 @@
       "automergeType": "branch"
     },
     {
+      "description": "Automerge GitHub Actions major updates (use integer versions like v4, v5)",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["major"],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
       "description": "Group all non-major updates (excludes @happyvertical packages which have their own grouping)",
       "groupName": "all dependencies",
       "groupSlug": "all-dependencies",
