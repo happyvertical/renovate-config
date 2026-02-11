@@ -16,19 +16,12 @@
       "labels": ["dependencies", "happyvertical"]
     },
     {
-      "description": "Automerge @happyvertical patch updates",
+      "description": "Automerge all @happyvertical updates (internal packages, always safe)",
       "matchPackagePatterns": ["^@happyvertical/"],
-      "matchUpdateTypes": ["patch"],
       "automerge": true,
       "automergeType": "pr",
-      "automergeStrategy": "squash"
-    },
-    {
-      "description": "Review @happyvertical major updates",
-      "matchPackagePatterns": ["^@happyvertical/"],
-      "matchUpdateTypes": ["major"],
-      "automerge": false,
-      "labels": ["dependencies", "happyvertical", "major"]
+      "automergeStrategy": "squash",
+      "platformAutomerge": true
     }
   ]
 }
