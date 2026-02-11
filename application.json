@@ -26,10 +26,11 @@
       "labels": ["dependencies", "smrt", "upstream"]
     },
     {
-      "description": "Automerge SDK and SMRT patch updates",
+      "description": "Automerge all @happyvertical updates (internal packages, always safe)",
       "matchPackagePatterns": ["^@happyvertical/"],
-      "matchUpdateTypes": ["patch"],
-      "automerge": true
+      "automerge": true,
+      "automergeType": "pr",
+      "platformAutomerge": true
     },
     {
       "description": "Use semver ranges in applications",
