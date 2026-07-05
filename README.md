@@ -18,9 +18,11 @@ Shareable [Renovate](https://docs.renovatebot.com/) configuration for the HappyV
 | `sites` | Web sites | happyvertical.com, bangblow.com |
 | `client` | External organizations | Client orgs using @happyvertical/* |
 
-### Dependency Grouping Presets
+### Dependency Labeling Presets
 
-| Preset | Packages Grouped |
+These presets add targeted labels without splitting the weekly organization PR.
+
+| Preset | Packages Labeled |
 |--------|------------------|
 | `groups/ai-sdks` | OpenAI, Anthropic, Google GenAI, LangChain, MCP |
 | `groups/typescript-tools` | TypeScript, Vite, Vitest, Biome, Turbo, Changesets |
@@ -89,9 +91,9 @@ If you're using `@happyvertical/*` packages in your project, you can use our cli
 ```
 
 This preset will:
-- Group all `@happyvertical/*` packages together
-- Automerge patch updates
-- Require review for major updates
+- Create one weekly dependency update PR on Saturday night
+- Label `@happyvertical/*` package updates
+- Require review before merging updates
 - Configure GitHub Packages registry
 
 **Note:** You need a GitHub token with `read:packages` scope to fetch `@happyvertical/*` packages from GitHub Packages.
@@ -100,40 +102,35 @@ This preset will:
 
 ### Base Settings (`default.json`)
 
-- **Schedule**: Manual triggers via Dependency Dashboard (empty schedule)
-- **Automerge**: All patch updates
-- **PR Limits**: 4/hour, 10 concurrent
+- **Schedule**: Saturday night, 9 PM-midnight `America/Edmonton`
+- **Grouping**: One `weekly dependency update` PR for dependency updates
+- **Automerge**: Disabled for normal dependency update PRs
+- **PR Limits**: 1/hour, 1 concurrent PR, 1 concurrent branch
 - **Commit Format**: `chore(deps): update {package} to {version}`
 - **Branch Prefix**: `renovate/`
 - **Labels**: `dependencies`, `renovate`
 - **Vulnerability Alerts**: Always enabled
+- **Standalone Lockfile Maintenance**: Disabled in the pnpm preset to avoid a second PR
 
 ### Layer Strategies
 
 | Layer | Version Strategy | Automerge |
 |-------|-----------------|-----------|
-| SDK | Pin all versions | Patches only |
-| SMRT | Pin SDK, bump others | Patches + SDK patches |
-| Applications | Semver ranges (bump) | All patches |
-| Sites | Semver ranges | All patches |
+| SDK | Pin all versions | Disabled |
+| SMRT | Pin SDK, bump others | Disabled |
+| Applications | Semver ranges (bump) | Disabled |
+| Sites | Semver ranges | Disabled |
 
-### Enabling Automatic Updates
+### Schedule Overrides
 
-The default schedule is manual (via Dependency Dashboard). To enable automatic updates, add a schedule to your config:
+The default schedule is already enabled for HappyVertical repos. Override it only when a repository needs an explicit exception:
 
 ```json
 {
-  "extends": [
-    "local>happyvertical/renovate-config:sdk",
-    "schedule:weekly"
-  ]
+  "extends": ["local>happyvertical/renovate-config:sdk"],
+  "schedule": ["* 0-3 * * 0"]
 }
 ```
-
-Available schedules:
-- `schedule:weekly` - Monday mornings
-- `schedule:monthly` - First Monday of month
-- `schedule:nonOfficeHours` - Outside business hours
 
 ## Repository Structure
 

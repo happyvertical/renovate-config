@@ -17,9 +17,11 @@
       "rangeStrategy": "replace"
     },
     {
-      "description": "Automerge minor and patch updates",
-      "matchUpdateTypes": ["minor", "patch"],
-      "automerge": true
+      "description": "Keep SDK dependency updates in the weekly organization PR",
+      "matchPackageNames": ["*"],
+      "groupName": "weekly dependency update",
+      "groupSlug": "weekly-dependency-update",
+      "automerge": false
     }
   ]
 }

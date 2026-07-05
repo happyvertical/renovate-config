@@ -13,33 +13,28 @@
   "labels": ["dependencies", "renovate", "smrt"],
   "packageRules": [
     {
-      "description": "Group and automerge @happyvertical SDK packages",
+      "description": "Label @happyvertical SDK packages",
       "matchPackagePatterns": ["^@happyvertical/(?!smrt-)"],
-      "groupName": "HappyVertical SDK",
-      "groupSlug": "happyvertical-sdk",
       "labels": ["dependencies", "sdk", "upstream"],
       "separateMajorMinor": false,
-      "separateMultipleMajor": false,
-      "automerge": true
+      "separateMultipleMajor": false
     },
     {
-      "description": "Automerge all patch updates",
-      "matchUpdateTypes": ["patch"],
-      "automerge": true
-    },
-    {
-      "description": "Group HTML parsing libraries",
+      "description": "Label HTML parsing libraries",
       "matchPackageNames": ["cheerio", "jsdom", "htmlparser2", "happy-dom"],
-      "groupName": "HTML Parsing",
-      "groupSlug": "html-parsing",
       "labels": ["dependencies", "parsing"]
     },
     {
-      "description": "Group glob utilities",
+      "description": "Label glob utilities",
       "matchPackageNames": ["fast-glob", "minimatch", "glob"],
-      "groupName": "Glob Utilities",
-      "groupSlug": "glob",
       "labels": ["dependencies", "utils"]
+    },
+    {
+      "description": "Keep SMRT dependency updates in the weekly organization PR",
+      "matchPackageNames": ["*"],
+      "groupName": "weekly dependency update",
+      "groupSlug": "weekly-dependency-update",
+      "automerge": false
     }
   ]
 }

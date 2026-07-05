@@ -7,21 +7,31 @@
     ":semanticCommitTypeAll(chore)"
   ],
   "npmrc": "@happyvertical:registry=https://npm.pkg.github.com",
+  "labels": ["dependencies", "renovate"],
+  "timezone": "America/Edmonton",
+  "prHourlyLimit": 1,
+  "prConcurrentLimit": 1,
+  "branchConcurrentLimit": 1,
+  "groupName": "weekly dependency update",
+  "groupSlug": "weekly-dependency-update",
+  "separateMajorMinor": false,
+  "separateMinorPatch": false,
+  "separateMultipleMajor": false,
+  "separateMultipleMinor": false,
+  "schedule": ["* 21-23 * * 6"],
+  "updateNotScheduled": false,
   "packageRules": [
     {
-      "description": "Group all @happyvertical packages together",
+      "description": "Label @happyvertical packages",
       "matchPackagePatterns": ["^@happyvertical/"],
-      "groupName": "HappyVertical Packages",
-      "groupSlug": "happyvertical",
       "labels": ["dependencies", "happyvertical"]
     },
     {
-      "description": "Automerge all @happyvertical updates (internal packages, always safe)",
-      "matchPackagePatterns": ["^@happyvertical/"],
-      "automerge": true,
-      "automergeType": "pr",
-      "automergeStrategy": "squash",
-      "platformAutomerge": true
+      "description": "Keep client dependency updates in the weekly organization PR",
+      "matchPackageNames": ["*"],
+      "groupName": "weekly dependency update",
+      "groupSlug": "weekly-dependency-update",
+      "automerge": false
     }
   ]
 }

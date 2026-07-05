@@ -3,31 +3,23 @@
   "description": "Database dependency grouping",
   "packageRules": [
     {
-      "description": "Group LibSQL/Turso client",
+      "description": "Label LibSQL/Turso client updates",
       "matchPackagePatterns": ["^@libsql/"],
-      "groupName": "LibSQL Client",
-      "groupSlug": "libsql",
       "labels": ["dependencies", "database"]
     },
     {
-      "description": "Group PostgreSQL clients",
+      "description": "Label PostgreSQL client updates",
       "matchPackageNames": ["pg", "@types/pg", "postgres"],
-      "groupName": "PostgreSQL",
-      "groupSlug": "postgresql",
       "labels": ["dependencies", "database"]
     },
     {
-      "description": "Group better-sqlite3",
+      "description": "Label better-sqlite3 updates",
       "matchPackageNames": ["better-sqlite3", "@types/better-sqlite3"],
-      "groupName": "better-sqlite3",
-      "groupSlug": "better-sqlite3",
       "labels": ["dependencies", "database"]
     },
     {
-      "description": "Group DuckDB",
+      "description": "Label DuckDB updates",
       "matchPackagePatterns": ["^duckdb", "^@duckdb/"],
-      "groupName": "DuckDB",
-      "groupSlug": "duckdb",
       "labels": ["dependencies", "database"]
     }
   ]
