@@ -9,30 +9,19 @@
   "labels": ["dependencies", "renovate", "sites"],
   "packageRules": [
     {
-      "description": "Group SST packages",
+      "description": "Label SST packages",
       "matchPackageNames": ["sst"],
-      "groupName": "SST",
-      "groupSlug": "sst",
       "labels": ["dependencies", "deployment"]
     },
     {
-      "description": "Group Tailwind ecosystem",
+      "description": "Label Tailwind ecosystem",
       "matchPackagePatterns": ["^tailwindcss", "^@tailwindcss/", "autoprefixer", "postcss"],
-      "groupName": "Tailwind CSS",
-      "groupSlug": "tailwindcss",
       "labels": ["dependencies", "css"]
     },
     {
-      "description": "Group Shiki (syntax highlighting)",
+      "description": "Label Shiki updates",
       "matchPackageNames": ["shiki"],
-      "groupName": "Shiki",
-      "groupSlug": "shiki",
       "labels": ["dependencies", "syntax"]
-    },
-    {
-      "description": "Automerge patch updates",
-      "matchUpdateTypes": ["patch"],
-      "automerge": true
     },
     {
       "description": "Ignore link: dependencies (local development)",
@@ -43,6 +32,13 @@
       "description": "Ignore file: dependencies",
       "matchCurrentValue": "/^file:/",
       "enabled": false
+    },
+    {
+      "description": "Keep site dependency updates in the weekly organization PR",
+      "matchPackageNames": ["*"],
+      "groupName": "weekly dependency update",
+      "groupSlug": "weekly-dependency-update",
+      "automerge": false
     }
   ]
 }

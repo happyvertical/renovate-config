@@ -12,25 +12,14 @@
   "labels": ["dependencies", "renovate", "application"],
   "packageRules": [
     {
-      "description": "Group @happyvertical SDK packages (all non-smrt packages)",
+      "description": "Label @happyvertical SDK packages (all non-smrt packages)",
       "matchPackagePatterns": ["^@happyvertical/(?!smrt-)"],
-      "groupName": "HappyVertical SDK",
-      "groupSlug": "happyvertical-sdk",
       "labels": ["dependencies", "sdk", "upstream"]
     },
     {
-      "description": "Group @happyvertical/smrt-* packages (framework)",
+      "description": "Label @happyvertical/smrt-* packages (framework)",
       "matchPackagePatterns": ["^@happyvertical/smrt-"],
-      "groupName": "SMRT Framework",
-      "groupSlug": "smrt-framework",
       "labels": ["dependencies", "smrt", "upstream"]
-    },
-    {
-      "description": "Automerge all @happyvertical updates (internal packages, always safe)",
-      "matchPackagePatterns": ["^@happyvertical/"],
-      "automerge": true,
-      "automergeType": "pr",
-      "platformAutomerge": true
     },
     {
       "description": "Use semver ranges in applications",
@@ -38,23 +27,21 @@
       "rangeStrategy": "bump"
     },
     {
-      "description": "Automerge all patch updates",
-      "matchUpdateTypes": ["patch"],
-      "automerge": true
-    },
-    {
-      "description": "Group Crawlee ecosystem",
+      "description": "Label Crawlee ecosystem",
       "matchPackagePatterns": ["^crawlee", "^@crawlee/"],
-      "groupName": "Crawlee",
-      "groupSlug": "crawlee",
       "labels": ["dependencies", "scraping"]
     },
     {
-      "description": "Group web scraping tools",
+      "description": "Label web scraping tools",
       "matchPackageNames": ["cheerio", "jsdom", "playwright", "happy-dom"],
-      "groupName": "Web Scraping",
-      "groupSlug": "web-scraping",
       "labels": ["dependencies", "scraping"]
+    },
+    {
+      "description": "Keep application dependency updates in the weekly organization PR",
+      "matchPackageNames": ["*"],
+      "groupName": "weekly dependency update",
+      "groupSlug": "weekly-dependency-update",
+      "automerge": false
     }
   ]
 }

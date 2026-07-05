@@ -18,20 +18,22 @@
   ],
   "npmrc": "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}\n@happyvertical:registry=https://npm.pkg.github.com",
   "labels": ["dependencies", "renovate"],
-  "prHourlyLimit": 4,
-  "prConcurrentLimit": 10,
+  "timezone": "America/Edmonton",
+  "prHourlyLimit": 1,
+  "prConcurrentLimit": 1,
+  "branchConcurrentLimit": 1,
   "commitMessagePrefix": "chore(deps):",
   "commitMessageAction": "update",
   "commitMessageTopic": "{{depName}}",
   "commitMessageExtra": "to {{#if isPinDigest}}{{{newDigestShort}}}{{else}}{{#if isMajor}}{{prettyNewMajor}}{{else}}{{#if isSingleVersion}}{{prettyNewVersion}}{{else}}{{#if newValue}}{{{newValue}}}{{else}}{{{newDigestShort}}}{{/if}}{{/if}}{{/if}}{{/if}}",
   "branchPrefix": "renovate/",
+  "groupName": "weekly dependency update",
+  "groupSlug": "weekly-dependency-update",
   "minor": {
-    "automerge": true,
-    "automergeType": "branch"
+    "automerge": false
   },
   "patch": {
-    "automerge": true,
-    "automergeType": "branch"
+    "automerge": false
   },
   "major": {
     "automerge": false
@@ -47,42 +49,24 @@
     "**/docs/node_modules/**"
   ],
   "pinDigests": true,
-  "separateMajorMinor": true,
-  "separateMultipleMajor": true,
-  "schedule": [],
+  "separateMajorMinor": false,
+  "separateMinorPatch": false,
+  "separateMultipleMajor": false,
+  "separateMultipleMinor": false,
+  "schedule": ["* 21-23 * * 6"],
+  "updateNotScheduled": false,
   "dependencyDashboard": true,
   "dependencyDashboardTitle": "Dependency Dashboard",
   "dependencyDashboardHeader": "This issue contains a list of all dependencies that can be updated. Click a checkbox to create a PR for that update.",
   "dependencyDashboardAutoclose": false,
   "packageRules": [
     {
-      "description": "Auto-merge pin and digest updates without PRs",
-      "matchUpdateTypes": ["pin", "digest", "pinDigest"],
-      "automerge": true,
-      "automergeType": "branch"
-    },
-    {
-      "description": "Automerge major updates for TypeScript definitions and tools with frequent major releases",
-      "matchPackagePatterns": ["^@types/", "^eslint-plugin-", "^prettier-plugin-"],
-      "matchPackageNames": ["typescript-eslint"],
-      "matchUpdateTypes": ["major"],
-      "automerge": true,
-      "automergeType": "branch"
-    },
-    {
-      "description": "Automerge GitHub Actions major updates (use integer versions like v4, v5)",
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["major"],
-      "automerge": true,
-      "automergeType": "branch"
-    },
-    {
-      "description": "Group all non-major updates (excludes @happyvertical packages which have their own grouping)",
-      "groupName": "all dependencies",
-      "groupSlug": "all-dependencies",
-      "matchPackagePatterns": ["*"],
-      "excludePackagePatterns": ["^@happyvertical/"],
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest", "pinDigest"]
+      "description": "Create one Saturday-night dependency update PR",
+      "matchPackageNames": ["*"],
+      "matchUpdateTypes": ["major", "minor", "patch", "pin", "digest", "pinDigest"],
+      "groupName": "weekly dependency update",
+      "groupSlug": "weekly-dependency-update",
+      "automerge": false
     }
   ]
 }

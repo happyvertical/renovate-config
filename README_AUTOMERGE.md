@@ -1,39 +1,21 @@
-# Automerge Configuration
+# Dependency Update Strategy
 
 ## Current Behavior
 
-- **Minor & Patch**: Automerge without PR
-- **Major**: Create PR for review
+- **Cadence**: One weekly PR on Saturday night, 9 PM-midnight `America/Edmonton`
+- **Grouping**: Major, minor, patch, pin, and digest updates share the `weekly dependency update` PR
+- **Automerge**: Disabled for normal dependency update PRs
 - **Vulnerability Alerts**: Always create PR (never automerge)
+- **Standalone Lockfile Maintenance**: Disabled for pnpm repos to avoid a second PR
 
-## Automerging Major Updates
+## Allowing Repository Exceptions
 
-To automerge major updates for specific packages (e.g., packages with frequent major releases or integer versioning), add them to the `matchPackageNames` array in `default.json`:
+Prefer keeping repository exceptions narrow. If a repository needs a temporary update stream for a specific package, add a local `packageRules` entry in that repository:
 
 ```json
 {
-  "description": "Automerge major updates for packages with frequent major releases",
-  "matchPackageNames": [
-    "@types/node",
-    "@types/react",
-    "typescript-eslint"
-  ],
-  "matchUpdateTypes": ["major"],
-  "automerge": true,
-  "automergeType": "branch"
+  "description": "Hold this package for manual dashboard approval",
+  "matchPackageNames": ["example-package"],
+  "dependencyDashboardApproval": true
 }
-```
-
-### Common Candidates
-
-Packages that often have non-breaking major updates:
-- `@types/*` - TypeScript type definitions
-- `@eslint/*` - ESLint core and plugins
-- `eslint-plugin-*` - ESLint plugins
-- `prettier-plugin-*` - Prettier plugins
-- Build tools with calendar-based versioning
-
-You can also use patterns:
-```json
-"matchPackagePatterns": ["^@types/", "^eslint-plugin-", "^prettier-plugin-"]
 ```

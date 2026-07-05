@@ -5,8 +5,7 @@
     "local>happyvertical/renovate-config"
   ],
   "lockFileMaintenance": {
-    "enabled": true,
-    "schedule": ["before 9am on monday"]
+    "enabled": false
   },
   "postUpdateOptions": ["pnpmDedupe"],
   "allowedPostUpgradeCommands": ["^pnpm"],
