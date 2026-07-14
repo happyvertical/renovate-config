@@ -7,7 +7,8 @@
     ":semanticCommitTypeAll(chore)",
     ":preserveSemverRanges",
     "group:monorepos",
-    "group:recommended"
+    "group:recommended",
+    "local>happyvertical/renovate-config:org-standards"
   ],
   "hostRules": [
     {

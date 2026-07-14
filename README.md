@@ -9,6 +9,7 @@ Shareable [Renovate](https://docs.renovatebot.com/) configuration for the HappyV
 | Preset | Description | Use Case |
 |--------|-------------|----------|
 | `default` | Base configuration with common settings | Extended by all other presets |
+| `org-standards` | Org-standard toolchain versions (Node, pnpm) | Extended by `default`; applies everywhere |
 | `monorepo` | Monorepo settings (handles `workspace:*`) | SDK, SMRT |
 | `pnpm` | pnpm-specific configuration | Most repos |
 | `bun` | Bun-specific configuration | IAC repo |
@@ -29,6 +30,25 @@ These presets add targeted labels without splitting the weekly organization PR.
 | `groups/aws-sdks` | @aws-sdk/* packages |
 | `groups/database` | LibSQL, PostgreSQL, better-sqlite3, DuckDB |
 | `groups/svelte` | Svelte, SvelteKit, Svelte plugins |
+
+### Org-standard toolchain versions
+
+`org-standards.json` is the single knob for org-wide toolchain versions.
+Each rule caps a tool with `allowedVersions`; every repo converges on the cap
+and holds there. To roll out a new standard (e.g. a new Node or pnpm version),
+bump the cap in `org-standards.json` — Renovate opens the bump PR in every
+repo on its next run, and each repo's own CI validates it.
+
+Current standards:
+
+| Tool | Version | Covers |
+|------|---------|--------|
+| Node | 24.18.0 | `engines.node`, `.nvmrc`, `node` Docker images, `node-version:` pins in workflows and composite actions |
+| pnpm | 11.13.0 | `packageManager`, `engines.pnpm` |
+
+Caveats: Renovate never downgrades (a repo hand-bumped above a cap must be
+fixed manually), and it cannot add a missing pin — repos without a
+`packageManager` field need it added once by hand before the rules apply.
 
 ## Usage
 
