@@ -41,14 +41,27 @@ repo on its next run, and each repo's own CI validates it.
 
 Current standards:
 
-| Tool | Version | Covers |
-|------|---------|--------|
-| Node | 24.18.0 | `engines.node`, `.nvmrc`, `node` Docker images, `node-version:` pins in workflows and composite actions |
-| pnpm | 11.13.0 | `packageManager`, `engines.pnpm` |
+| Tool | Version | Strategy | Covers |
+|------|---------|----------|--------|
+| Node | 24.18.0 | bump ranges | `engines.node`, `.nvmrc`, `node` Docker images, `node-version:` pins in workflows and composite actions |
+| pnpm | 11.13.0 | bump ranges | `packageManager`, `engines.pnpm` |
+| TypeScript | 5.9.3 | pin exact | blocks TS 6/7 this wave |
+| Vitest | 4.1.10 | pin exact | `vitest` and `@vitest/*` in lockstep |
+| Vite | 8.1.4 | pin exact | |
+| SvelteKit | 2.69.3 | pin exact | |
+| Biome | 2.5.3 | pin exact | |
+| Turbo | 2.10.5 | pin exact | |
+| Lefthook | 2.1.10 | pin exact | |
 
-Caveats: Renovate never downgrades (a repo hand-bumped above a cap must be
-fixed manually), and it cannot add a missing pin — repos without a
-`packageManager` field need it added once by hand before the rules apply.
+The blanket `rangeStrategy: bump` rules in `pnpm.json` and `application.json`
+exclude the pinned tools so the pins are not overridden (later-resolving
+package rules win in Renovate).
+
+Caveats: Renovate never downgrades (repos already above a cap — e.g. on
+TypeScript 6 — must be brought back manually), it cannot add a missing pin
+(repos without a `packageManager` field need it added once by hand), and the
+`client` preset does not extend `default`, so repos on it do not inherit these
+standards.
 
 ## Usage
 
