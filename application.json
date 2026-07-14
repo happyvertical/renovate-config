@@ -22,8 +22,17 @@
       "labels": ["dependencies", "smrt", "upstream"]
     },
     {
-      "description": "Use semver ranges in applications",
-      "matchPackagePatterns": ["*"],
+      "description": "Use semver ranges in applications, except org-standard tools which stay pinned (see org-standards.json)",
+      "matchPackageNames": [
+        "!typescript",
+        "!vitest",
+        "!@vitest/**",
+        "!vite",
+        "!@sveltejs/kit",
+        "!@biomejs/biome",
+        "!turbo",
+        "!lefthook"
+      ],
       "rangeStrategy": "bump"
     },
     {

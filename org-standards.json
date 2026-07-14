@@ -1,0 +1,82 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Org-standard toolchain versions. Each rule caps a tool at the org standard via allowedVersions; bumping a cap here rolls the new standard out to every repo on the next Renovate run. Renovate never downgrades, so a repo pinned above a cap must be fixed manually.",
+  "packageRules": [
+    {
+      "description": "Org standard: Node 24.18.0 (engines, .nvmrc, node Docker images, workflow node-version pins)",
+      "matchDepNames": ["node"],
+      "allowedVersions": "<=24.18.0",
+      "rangeStrategy": "bump"
+    },
+    {
+      "description": "Org standard: pnpm 11.13.0 (packageManager and engines)",
+      "matchDepNames": ["pnpm"],
+      "allowedVersions": "<=11.13.0",
+      "rangeStrategy": "bump"
+    },
+    {
+      "description": "Org standard: TypeScript 5.9.3 this wave (blocks TS 6/7; repos already above the cap must be downgraded manually)",
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<=5.9.3",
+      "rangeStrategy": "pin"
+    },
+    {
+      "description": "Org standard: Vitest 4.1.10 (@vitest/* kept in lockstep)",
+      "matchPackageNames": ["vitest", "@vitest/**"],
+      "allowedVersions": "<=4.1.10",
+      "rangeStrategy": "pin"
+    },
+    {
+      "description": "Org standard: Vite 8.1.4",
+      "matchPackageNames": ["vite"],
+      "allowedVersions": "<=8.1.4",
+      "rangeStrategy": "pin"
+    },
+    {
+      "description": "Org standard: SvelteKit 2.69.3",
+      "matchPackageNames": ["@sveltejs/kit"],
+      "allowedVersions": "<=2.69.3",
+      "rangeStrategy": "pin"
+    },
+    {
+      "description": "Org standard: Biome 2.5.3",
+      "matchPackageNames": ["@biomejs/biome"],
+      "allowedVersions": "<=2.5.3",
+      "rangeStrategy": "pin"
+    },
+    {
+      "description": "Org standard: Turbo 2.10.5",
+      "matchPackageNames": ["turbo"],
+      "allowedVersions": "<=2.10.5",
+      "rangeStrategy": "pin"
+    },
+    {
+      "description": "Org standard: Lefthook 2.1.10",
+      "matchPackageNames": ["lefthook"],
+      "allowedVersions": "<=2.1.10",
+      "rangeStrategy": "pin"
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Track same-line node-version pins in workflow and composite-action YAML",
+      "managerFilePatterns": ["/^\\.github/(workflows|actions)/.+\\.ya?ml$/"],
+      "matchStrings": [
+        "node-version:\\s*['\"]?(?<currentValue>\\d+\\.\\d+\\.\\d+)['\"]?\\s*$"
+      ],
+      "depNameTemplate": "node",
+      "datasourceTemplate": "node-version"
+    },
+    {
+      "customType": "regex",
+      "description": "Track node-version input defaults in composite actions",
+      "managerFilePatterns": ["/^\\.github/actions/.+\\.ya?ml$/"],
+      "matchStrings": [
+        "node-version:\\s*\\n\\s+description:[^\\n]*\\n(?:\\s+required:[^\\n]*\\n)?\\s+default:\\s*['\"](?<currentValue>\\d+\\.\\d+\\.\\d+)['\"]"
+      ],
+      "depNameTemplate": "node",
+      "datasourceTemplate": "node-version"
+    }
+  ]
+}
