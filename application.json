@@ -13,12 +13,12 @@
   "packageRules": [
     {
       "description": "Label @happyvertical SDK packages (all non-smrt packages)",
-      "matchPackagePatterns": ["^@happyvertical/(?!smrt-)"],
+      "matchPackageNames": ["@happyvertical/*", "!@happyvertical/smrt-*"],
       "labels": ["dependencies", "sdk", "upstream"]
     },
     {
       "description": "Label @happyvertical/smrt-* packages (framework)",
-      "matchPackagePatterns": ["^@happyvertical/smrt-"],
+      "matchPackageNames": ["@happyvertical/smrt-*"],
       "labels": ["dependencies", "smrt", "upstream"]
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "description": "Label Crawlee ecosystem",
-      "matchPackagePatterns": ["^crawlee", "^@crawlee/"],
+      "matchPackageNames": ["crawlee*", "@crawlee/*"],
       "labels": ["dependencies", "scraping"]
     },
     {
