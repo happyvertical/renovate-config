@@ -17,7 +17,6 @@
       "description": "GitHub Packages registry for @happyvertical scope"
     }
   ],
-  "npmrc": "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}\n@happyvertical:registry=https://npm.pkg.github.com",
   "labels": ["dependencies", "renovate"],
   "timezone": "America/Edmonton",
   "prHourlyLimit": 1,
@@ -47,7 +46,8 @@
   "ignorePaths": [
     "**/node_modules/**",
     "**/dist/**",
-    "**/docs/node_modules/**"
+    "**/docs/node_modules/**",
+    ".github/workflows/agent-policy.yml"
   ],
   "pinDigests": true,
   "separateMajorMinor": false,
