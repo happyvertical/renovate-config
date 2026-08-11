@@ -144,6 +144,8 @@ This preset will:
 - **Labels**: `dependencies`, `renovate`
 - **Vulnerability Alerts**: Always enabled
 - **Standalone Lockfile Maintenance**: Disabled in the pnpm preset to avoid a second PR
+- **Registry Authentication**: Provided by the Renovate runtime's trusted user-level npm config; the preset does not materialize credential-bearing project `.npmrc` files.
+- **Managed Policy Workflow**: `.github/workflows/agent-policy.yml` is excluded because it is generated and validated by the shared agent-policy control plane.
 
 ### Layer Strategies
 
