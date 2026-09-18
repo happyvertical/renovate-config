@@ -6,7 +6,6 @@
     ":dependencyDashboard",
     ":semanticCommitTypeAll(chore)"
   ],
-  "npmrc": "@happyvertical:registry=https://npm.pkg.github.com",
   "labels": ["dependencies", "renovate"],
   "timezone": "America/Edmonton",
   "prHourlyLimit": 1,
